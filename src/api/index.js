@@ -17,6 +17,7 @@ const request = async (url, options = {}) => {
 
     if (!response.ok) {
       const error = new Error(data.message || "请求失败");
+      console.log(data, 111);
       error.response = data;
       error.status = response.status;
       throw error;

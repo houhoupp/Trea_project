@@ -144,7 +144,9 @@ export function useNavigation() {
   }
 
   function navigateTo(href: string) {
-    setActive(findItemById(items.value, activeId.value)?.id || null);
+    if (activeId.value) {
+      setActive(findItemById(items.value, activeId.value)?.id || null);
+    }
     window.location.href = href;
   }
 

@@ -202,15 +202,7 @@ function handleGlobalKeydown(event) {
           @close="handleMenuClose"
           @select="handleSelect"
         >
-          <NavSubmenu
-            :items="items"
-            :active-ids="activeIds"
-            :expanded-ids="expandedIds"
-            :is-collapsed="isCollapsed"
-            :level="1"
-            @toggle="toggleExpanded"
-            @select="handleSelect"
-          />
+          <NavSubmenu :items="items" :is-collapsed="isCollapsed" :level="1" />
         </ElMenu>
       </transition>
 

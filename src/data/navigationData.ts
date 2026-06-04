@@ -12,9 +12,10 @@ export const navigationData: NavItem[] = [
     label: "肉鸽射击",
     icon: "⚔️",
     href: "/rouge",
-    badge: "NEW",
-    badgeType: "danger",
+    // badge: "NEW",
+    // badgeType: "danger",
   },
+
   {
     id: "services",
     label: "服务套餐",
