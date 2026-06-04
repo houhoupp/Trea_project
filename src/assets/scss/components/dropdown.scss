@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+@use "../variables.scss" as *;
+@use "../mixins.scss" as *;
+
+.el-menu--popup {
+  min-width: 200px;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
+  padding: $spacing-xs 0;
+  border: none;
+  background: $bg-color-page;
+}
+
+.el-menu--popup .el-menu-item {
+  height: $nav-item-height;
+  line-height: $nav-item-height;
+  padding: 0 $spacing-lg 0 $spacing-xl;
+  margin: $spacing-xs $spacing-md;
+  border-radius: $radius-md;
+  @include transition(all);
+  background: transparent;
+  position: relative;
+
+  .nav-label {
+    color: $text-color-primary;
+    font-weight: 500;
+  }
+
+  .nav-icon {
+    color: $text-color-secondary;
+  }
+
+  &:hover {
+    @include hover-highlight($primary-color);
+  }
+
+  &.is-active {
+    @include active-highlight($primary-color);
+
+    &:hover {
+      @include hover-highlight($primary-color);
+    }
+  }
+}
+
+.el-menu--popup .el-submenu__title {
+  height: $nav-item-height;
+  line-height: $nav-item-height;
+  padding: 0 $spacing-lg 0 $spacing-xl;
+  margin: $spacing-xs $spacing-md;
+  border-radius: $radius-md;
+  @include transition(all);
+  background: transparent;
+  position: relative;
+
+  .nav-label {
+    color: $text-color-primary;
+    font-weight: 500;
+  }
+
+  .nav-icon {
+    color: $text-color-secondary;
+  }
+
+  &:hover {
+    @include hover-highlight($primary-color);
+  }
+
+  &.is-active {
+    @include active-highlight($primary-color);
+  }
+}
+
+.el-menu--popup .el-sub-menu .el-menu {
+  background: transparent;
+}
+
+.el-menu--popup .el-sub-menu > .el-menu {
+  padding-left: 0;
+}
+
+.el-menu--popup .el-sub-menu .el-menu .el-menu-item {
+  padding-left: $spacing-xxl;
+  background: transparent;
+
+  &:hover {
+    @include hover-highlight($primary-color);
+  }
+
+  &.is-active {
+    @include active-highlight($primary-color);
+
+    &:hover {
+      @include hover-highlight($primary-color);
+    }
+  }
+}

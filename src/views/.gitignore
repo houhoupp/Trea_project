@@ -1,0 +1,5 @@
+# Windows PowerShell 或 CMD
+echo node_modules/ > .gitignore
+
+# Mac / Linux
+echo "node_modules/" >> .gitignore

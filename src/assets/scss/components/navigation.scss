@@ -1,0 +1,264 @@
+@charset "UTF-8";
+
+@use "../variables.scss" as *;
+@use "../mixins.scss" as *;
+
+.side-nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: $nav-width-expanded;
+  background-color: $bg-color-page;
+  box-shadow: $shadow-md;
+  z-index: $z-index-sticky;
+  display: flex;
+  flex-direction: column;
+  @include transition(width);
+
+  &.is-collapsed {
+    width: $nav-width-collapsed;
+
+    .nav-header {
+      padding: $spacing-md;
+
+      .nav-title {
+        opacity: 0;
+        pointer-events: none;
+        width: 0;
+      }
+    }
+
+    .nav-user {
+      padding: $spacing-sm;
+
+      .user-name {
+        opacity: 0;
+        pointer-events: none;
+        width: 0;
+      }
+
+      .user-avatar {
+        margin: 0 auto;
+      }
+    }
+
+    .nav-item {
+      justify-content: center;
+
+      .nav-label {
+        opacity: 0;
+        pointer-events: none;
+        width: 0;
+      }
+
+      .nav-badge {
+        position: absolute;
+        top: 4px;
+        right: 8px;
+      }
+    }
+
+    .nav-footer {
+      .toggle-text {
+        opacity: 0;
+        pointer-events: none;
+        width: 0;
+      }
+    }
+  }
+}
+
+.nav-header {
+  padding: $spacing-lg $spacing-xl;
+  border-bottom: 1px solid $border-color-dark;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+
+  .nav-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    background: $primary-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .nav-title {
+    font-size: $font-size-lg;
+    font-weight: 700;
+    color: $text-color-primary;
+    @include transition(all);
+    flex-shrink: 0;
+  }
+}
+
+.nav-user {
+  padding: $spacing-md $spacing-xl;
+  border-bottom: 1px solid $border-color-dark;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+
+  .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: $primary-light-9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .user-name {
+    font-size: $font-size-sm;
+    font-weight: 600;
+    color: $text-color-primary;
+    @include transition(all);
+    flex-shrink: 0;
+  }
+}
+
+.nav-main {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-sm 0;
+
+  &.el-menu-custom {
+    border: none;
+  }
+}
+
+.nav-item {
+  height: $nav-item-height;
+  line-height: $nav-item-height;
+  padding: 0 $spacing-xl;
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  cursor: pointer;
+  @include transition(all);
+  position: relative;
+
+  &:hover {
+    background: $bg-color-base;
+  }
+
+  &.is-active {
+    background: $primary-light-9;
+
+    .nav-label {
+      color: $primary-color;
+      font-weight: 600;
+    }
+
+    .nav-icon {
+      color: $primary-color;
+    }
+  }
+}
+
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  color: $text-color-secondary;
+  flex-shrink: 0;
+  @include transition(color);
+}
+
+.nav-label {
+  font-size: $font-size-sm;
+  color: $text-color-regular;
+  flex-shrink: 0;
+  @include transition(color);
+}
+
+.nav-badge {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.nav-footer {
+  padding: $spacing-md;
+  border-top: 1px solid $border-color-dark;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+
+  .nav-toggle {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include transition(background);
+
+    &:hover {
+      background: $bg-color-base;
+    }
+  }
+
+  .toggle-text {
+    font-size: $font-size-xs;
+    color: $text-color-secondary;
+    @include transition(all);
+  }
+}
+
+.nav-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-xl;
+  gap: $spacing-md;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid $border-color-light;
+  border-top-color: $primary-color;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: $font-size-xs;
+  color: $text-color-secondary;
+}
+
+@include media-query($breakpoint-md) {
+  .side-nav {
+    position: fixed;
+    left: -$nav-width-expanded;
+    transition: left $transition-fast;
+    z-index: $z-index-modal;
+
+    &.is-expanded {
+      left: 0;
+    }
+  }
+
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: $z-index-sticky;
+  }
+}

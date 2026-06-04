@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+@use "./variables.scss" as *;
+@use "./mixins.scss" as *;
+@use "./base.scss" as *;
+@use "./components/navigation.scss" as *;
+@use "./components/dropdown.scss" as *;
+
+#app {
+  margin: 0 auto;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  @include transition;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

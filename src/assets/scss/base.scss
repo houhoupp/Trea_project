@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+@use "./variables.scss" as *;
+@use "./mixins.scss" as *;
+@use "./functions.scss" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: $font-size-base;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  color: $text-color-primary;
+  background-color: $bg-color-base;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  @include transition;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: inherit;
+  @include transition;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+:focus {
+  outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $border-color-light;
+  border-radius: $radius-sm;
+
+  &:hover {
+    background: $text-color-secondary;
+  }
+}

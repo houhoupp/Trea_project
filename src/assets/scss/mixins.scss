@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+@use "./variables.scss" as *;
+
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@mixin ellipsis($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+    overflow: hidden;
+  }
+}
+
+@mixin transition($properties: all, $duration: 0.2s) {
+  transition: $properties $duration cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@mixin box-shadow($type: md) {
+  @if $type == sm {
+    box-shadow: $shadow-sm;
+  } @else if $type == md {
+    box-shadow: $shadow-md;
+  } @else if $type == lg {
+    box-shadow: $shadow-lg;
+  } @else if $type == xl {
+    box-shadow: $shadow-xl;
+  }
+}
+
+@mixin media-query($breakpoint, $type: max) {
+  @if $type == max {
+    @media (max-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin gradient-bg($color: $primary-color) {
+  background: linear-gradient(135deg, rgba($color, 0.15) 0%, rgba($color, 0.1) 100%);
+}
+
+@mixin active-highlight($color: $primary-color) {
+  background: rgba($color, 0.1);
+
+  .nav-label {
+    color: $color;
+    font-weight: 600;
+  }
+
+  .nav-icon {
+    color: $color;
+  }
+}
+
+@mixin hover-highlight($color: $primary-color) {
+  @include gradient-bg($color);
+  transform: translateX(4px);
+  border-left: 3px solid $color;
+
+  .nav-label {
+    color: $color;
+    font-weight: 600;
+  }
+
+  .nav-icon {
+    color: $color;
+  }
+}
